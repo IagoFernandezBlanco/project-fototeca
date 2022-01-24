@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <style>
+        a{
+            margin: 10px;
+            color: yellow;
+        }
+        a:hover{
+            background-color: grey;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+    <title>Fototeca</title>
+</head>
+<body> 
+    <h1 style="color: <%= colorTitulo %>">Fototeca</h1>
+        <%- include('./partials/navigation'); %>
+
+        <div style="background-color: turquoise;">
+            <p style="color: white;">Hasta ahora se han subido <%= numeroFotos%> fotos</p>
+        </div>
+ 
+    
+
+    <ul style="display: flex;">
+        <% fotos.forEach(function(foto) { %>
+            <li style="display: inline-block;">
+                <strong>
+                    <%= foto.titulo %>  
+                </strong>
+                <div  style="margin-right: 20px;">
+                    <img style="width: 200px" src = <%= foto.url %> alt="">
+                </div>
+                <p>
+                    <%= foto.fecha %>
+                </p>
+                
+            </li>
+            
+            <% }); %>
+            
+    </ul>
+  <script src="script.js"></script>
+    
+    
+
+</body>
+</html>

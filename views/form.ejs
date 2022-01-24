@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+   <link rel="stylesheet" href="main.css">
+
+    <title>Fototeca</title>
+</head>
+<body>
+    <%- include('./partials/navigation'); %>
+ <form action="/nueva-foto" method="post">
+     
+   <label for="titulo">Título</label>
+   <input type="text" name="titulo" id="titulo" maxlength="10" pattern="[a-zA-Z0-9._]*" required>
+     
+   <label for="url">URL de la imagen</label>
+   <input type="url" name="url" id="url" required>
+     
+   <label for="fecha">Fecha</label>
+   <input type="date" name="fecha" id="fecha" required>
+     
+   <input type="submit" value="Foto">
+
+   <% if(error){ %>
+   <p style="background-color: red;">
+       <%= error%>
+   </p>
+<% }%>
+</form>
+
+</body>
+
+</html>
