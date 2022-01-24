@@ -2,6 +2,8 @@
 
 const express = require('express')
 
+// Importar la biblioteca de colores
+const  {getColorFromURL} = require('color-thief-node')
 // Crea una i8nstancia del objeto Express
 const app = express()
 
@@ -39,17 +41,14 @@ app.get('/nueva-foto', (req, res) =>{
     })
 })
 
-app.post('/nueva-foto', (req,res)=>{
+
+app.post('/nueva-foto', async (req,res)=>{
   let tituloMay = tituloMayuscula(req.body.titulo);
   let formato = cambiarFormatoFecha(req.body.fecha);
 
    // Crear un nuevo objeto que almacene datos de las fotos
    console.log(req.body);
-   let foto = {
-      titulo: tituloMay,
-      url: req.body.url,
-      fecha: formato
-   }
+  
    let fotoExiste = existeFotoBBDD(req.body.url);
    if(fotoExiste){
      res.render("form",{
@@ -57,8 +56,13 @@ app.post('/nueva-foto', (req,res)=>{
      })
      return;
    }
-   
-
+   let color = await obtenerColorPredominante(req.body.url)
+   let foto = {
+    titulo: tituloMay,
+    url: req.body.url,
+    fecha: formato,
+    color
+ }
    // Luego añadir el objeto al array
    fotos.push(foto);
    
@@ -68,6 +72,9 @@ app.post('/nueva-foto', (req,res)=>{
 
   
 })
+async function obtenerColorPredominante(url){
+  return await getColorFromURL(url);
+}
 
 function existeFotoBBDD(url){
   let encontrado = fotos.some(foto => url ==foto.url)

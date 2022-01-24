@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "color-thief-node": "^1.0.4",
     "colorthief": "^2.3.2",
     "ejs": "^3.1.6",
     "express": "^4.17.2"
