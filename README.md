@@ -7,3 +7,7 @@
  - Express
  - EJS
  - [Color-thief-node](https://www.npmjs.com/package/color-thief-node)
+
+---
+### Exise una carpeta que fue ignorada a la hora de subir este código, es necesario ejecutar un comando para que se cree esa carpeta
+<code> npm install express <code>
