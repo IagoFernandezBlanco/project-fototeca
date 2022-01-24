@@ -5,3 +5,5 @@
 ### Herramientas empleadas:
  - Node.js
  - Express
+ - EJS
+ - [Color-thief-node](https://www.npmjs.com/package/color-thief-node)
