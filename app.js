@@ -28,12 +28,14 @@ app.get('/', function (req, res) {
   res.render("index",{
     numeroFotos: fotos.length,
     fotos: fotos,
-    colorTitulo // Si la propiedad y el valor se llaman igual no hace falta
+    colorTitulo, // Si la propiedad y el valor se llaman igual no hace falta
+    path: '/'
   })
 })
 app.get('/nueva-foto', (req, res) =>{
     res.render("form",{
-      error:""
+      error:"",
+      path:'/nueva-foto'
     })
 })
 
